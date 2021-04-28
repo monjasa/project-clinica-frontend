@@ -12,6 +12,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Tables & Data',
+    icon: 'grid-outline',
+    children: [
+      {
+        title: 'Smart Table',
+        link: '/pages/tables/smart-table',
+      },
+    ],
+  },
+  {
     title: 'Auth',
     icon: 'lock-outline',
     children: [
