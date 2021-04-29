@@ -13,9 +13,9 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
+      path: 'users',
+      loadChildren: () => import('./users/users.module')
+        .then(m => m.UsersModule),
     },
     {
       path: '',

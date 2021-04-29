@@ -3,7 +3,7 @@ import { NbCardModule, NbIconModule, NbInputModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { TablesRoutingModule, routedComponents } from './tables-routing.module';
+import { UsersRoutingModule, routedComponents } from './users-routing.module';
 
 @NgModule({
   imports: [
@@ -11,11 +11,11 @@ import { TablesRoutingModule, routedComponents } from './tables-routing.module';
     NbIconModule,
     NbInputModule,
     ThemeModule,
-    TablesRoutingModule,
+    UsersRoutingModule,
     Ng2SmartTableModule,
   ],
   declarations: [
     ...routedComponents,
   ],
 })
-export class TablesModule { }
+export class UsersModule { }

@@ -3,27 +3,27 @@ import { NbMenuItem } from '@nebular/theme';
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
-    icon: 'home-outline',
+    icon: 'home',
     link: '/pages/dashboard',
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: 'MODULES',
     group: true,
   },
   {
-    title: 'Tables & Data',
-    icon: 'grid-outline',
+    title: 'Users',
+    icon: 'person',
     children: [
       {
-        title: 'Smart Table',
-        link: '/pages/tables/smart-table',
+        title: 'Manage Users',
+        link: '/pages/users/all',
       },
     ],
   },
   {
     title: 'Auth',
-    icon: 'lock-outline',
+    icon: 'lock',
     children: [
       {
         title: 'Login',
