@@ -1,35 +1,19 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbRoleProvider, NbSecurityModule } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { AnalyticsService, SeoService } from './utils';
-import { UserData } from './data/users';
-import { UserService } from './mock/users.service';
-import { MockDataModule } from './mock/mock-data.module';
 
 const socialLinks = [
   {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'twitter',
+    url: 'https://248395a3c7ad.ngrok.io/api/oauth2/authorization/google',
+    icon: 'google',
   },
 ];
 
 const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -40,7 +24,6 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
 }
 
 export const NB_CORE_PROVIDERS = [
-  ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
 
@@ -48,6 +31,9 @@ export const NB_CORE_PROVIDERS = [
       NbDummyAuthStrategy.setup({
         name: 'email',
         delay: 3000,
+        token: {
+          class: NbAuthJWTToken,
+        },
       }),
     ],
     forms: {
@@ -77,8 +63,6 @@ export const NB_CORE_PROVIDERS = [
   {
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
-  AnalyticsService,
-  SeoService,
 ];
 
 @NgModule({

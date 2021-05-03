@@ -1,0 +1,29 @@
+@import '../../@theme/styles/themes';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+@include nb-install-component() {
+  .socials {
+    nb-icon {
+      font-size: 3rem;
+    }
+
+    a {
+      padding: 0.4rem;
+      color: nb-theme(text-hint-color);
+      transition: color ease-out 0.1s;
+
+      &:hover {
+        color: nb-theme(text-basic-color);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    .socials {
+      nb-icon {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

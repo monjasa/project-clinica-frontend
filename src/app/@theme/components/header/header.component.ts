@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
-import { UserData } from '../../../@core/data/users';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/http/user.service';
 
 @Component({
   selector: 'ngx-header',
@@ -13,21 +14,23 @@ import { Subject } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   userPictureOnly: boolean = false;
-  user: any;
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  user: UserModel;
+  userMenu = [{ title: 'Log out' }];
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private userService: UserData,
-              private breakpointService: NbMediaBreakpointsService) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private sidebarService: NbSidebarService,
+    private menuService: NbMenuService,
+    private themeService: NbThemeService,
+    private breakpointService: NbMediaBreakpointsService) {
   }
 
   ngOnInit() {
-    this.userService.getUsers()
+    this.userService.getCurrentUser()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.eva);
+      .subscribe(value => this.user = value);
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -36,6 +39,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe((isLessThanXl: boolean) => this.userPictureOnly = isLessThanXl);
+
+    this.menuService.onItemClick().subscribe(event => {
+      switch (event.item.title) {
+        case 'Log out':
+          this.router.navigate(['/authentication/logout']);
+      }
+    });
   }
 
   ngOnDestroy() {

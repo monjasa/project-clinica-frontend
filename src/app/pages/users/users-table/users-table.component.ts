@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { ServerDataSource } from 'ng2-smart-table';
 
 import { MainUserService } from '../../../services/http/main-user.service';
+import { UserService } from '../../../services/http/user.service';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -35,12 +36,17 @@ export class UsersTableComponent {
         type: 'number',
       },
     },
+    pager: {
+      display: true,
+      perPage: 3,
+    },
+    noDataMessage: 'Please, wait a moment while we load data...',
   };
 
-  source: LocalDataSource = new LocalDataSource();
+  source: ServerDataSource;
 
-  constructor(private mainUserService: MainUserService) {
-    this.mainUserService.getMainUsers()
-      .subscribe(data => this.source.load(data));
+  constructor(private mainUserService: MainUserService, private userService: UserService) {
+    // this.source = this.mainUserService.getMainUsersServerDataSource();
+    this.userService.getCurrentUser().subscribe(value => console.log(value));
   }
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ServerDataSource } from 'ng2-smart-table';
+import { CustomServerDataSource } from '../../shared/models/default-server-data-source';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +11,17 @@ import { Observable } from 'rxjs';
 export class MainUserService {
 
   constructor(private http: HttpClient) {
+  }
+
+  public getMainUsersServerDataSource(): ServerDataSource {
+    return new CustomServerDataSource(this.http, {
+      endPoint: 'http://localhost:4200/api/user/all',
+      dataKey: 'content',
+      pagerPageKey: 'page',
+      pagerLimitKey: 'size',
+      sortFieldKey: 'sort',
+      totalKey: 'totalElements',
+    });
   }
 
   public getMainUsers(): Observable<MainUser[]> {
