@@ -16,8 +16,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'person',
     children: [
       {
-        title: 'Manage Users',
-        link: '/pages/users/all',
+        title: 'Patients',
+        link: '/pages/patients/all',
       },
     ],
   },

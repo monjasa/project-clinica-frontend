@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="header">Patient</h1>
+    <nb-card>
+      <nb-card-header>Patient Details</nb-card-header>
+      <nb-card-body>
+
+        <div class="two-columns-form-group">
+          <div class="form-group">
+            <label for="inputFirstName" class="label">First Name</label>
+            <input type="text" nbInput fullWidth id="inputFirstName" placeholder="First Name"
+                   [value]="patient?.user.firstName">
+          </div>
+          <div class="form-group">
+            <label for="inputLastName" class="label">Last Name</label>
+            <input type="text" nbInput fullWidth id="inputLastName" placeholder="Last Name"
+                   [value]="patient?.user.lastName">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputGender" class="label">Gender</label>
+          <nb-select fullWidth id="inputGender" placeholder="Gender"
+                     [selected]="patient?.user.gender">
+            <nb-option [value]="'Male'">Male</nb-option>
+            <nb-option [value]="'Female'">Female</nb-option>
+            <nb-option [value]="'Not Applicable'">Not Applicable</nb-option>
+          </nb-select>
+        </div>
+
+        <div class="form-group">
+          <label for="inputDateOfBirth" class="label">Date of Birth</label>
+          <nb-form-field>
+            <nb-icon nbPrefix icon="calendar-outline" pack="eva"></nb-icon>
+            <input nbInput fullWidth
+                   id="inputDateOfBirth"
+                   placeholder="Date of Birth"
+                   [value]="patient?.user.dateOfBirth"
+                   [nbDatepicker]="dateOfBirthPicker">
+            <nb-datepicker #dateOfBirthPicker></nb-datepicker>
+          </nb-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="inputOccupation" class="label">Occupation</label>
+          <input type="text" nbInput fullWidth id="inputOccupation" placeholder="Occupation"
+                 [value]="patient?.occupation">
+        </div>
+
+        <div class="form-group">
+          <label for="inputInsuranceNumber" class="label">Insurance Number</label>
+          <input type="text" nbInput fullWidth id="inputInsuranceNumber" placeholder="Insurance Number"
+                 [value]="patient?.insuranceNumber">
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail" class="label">Email</label>
+          <nb-form-field>
+            <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
+            <input type="email" nbInput fullWidth id="inputEmail" placeholder="Email"
+                   [value]="patient?.user.email">
+          </nb-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPhone" class="label">Phone Number</label>
+          <nb-form-field>
+            <nb-icon nbPrefix icon="phone-outline" pack="eva"></nb-icon>
+            <input type="tel" nbInput fullWidth id="inputPhone" placeholder="Phone Number"
+                   [value]="patient?.user.phoneNumber">
+          </nb-form-field>
+        </div>
+
+        <div class="two-columns-form-group">
+          <div class="form-group">
+            <label for="inputWeight" class="label">Weight</label>
+            <input type="number" nbInput fullWidth id="inputWeight" placeholder="Weight"
+                   [value]="patient?.medicalRecord.weight">
+          </div>
+          <div class="form-group">
+            <label for="inputHeight" class="label">Height</label>
+            <input type="number" nbInput fullWidth id="inputHeight" placeholder="Height"
+                   [value]="patient?.medicalRecord.height">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputBloodType" class="label">Blood Type</label>
+          <nb-select fullWidth id="inputBloodType" placeholder="Blood Type"
+                     [selected]="patient?.medicalRecord.bloodType">
+            <nb-option [value]="'O-'">O-</nb-option>
+            <nb-option [value]="'O+'">O+</nb-option>
+            <nb-option [value]="'A-'">A-</nb-option>
+            <nb-option [value]="'A+'">A+</nb-option>
+            <nb-option [value]="'B-'">B-</nb-option>
+            <nb-option [value]="'B+'">B+</nb-option>
+            <nb-option [value]="'AB-'">AB-</nb-option>
+            <nb-option [value]="'AB+'">AB+</nb-option>
+          </nb-select>
+        </div>
+
+        <a nbButton fullWidth [status]="'primary'" routerLink="/pages/patients/all">
+          <nb-icon icon="person-add"></nb-icon>
+          <span>Save Patient</span>
+        </a>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

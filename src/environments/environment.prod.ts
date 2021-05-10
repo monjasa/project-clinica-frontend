@@ -5,4 +5,6 @@
  */
 export const environment = {
   production: true,
+  apiUri: 'http://localhost:4200/api',
+  authUri: 'https://000a2143f492.ngrok.io/api',
 };

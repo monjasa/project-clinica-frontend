@@ -5,10 +5,11 @@ import { NbRoleProvider, NbSecurityModule } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { environment } from '../../environments/environment';
 
 const socialLinks = [
   {
-    url: 'https://248395a3c7ad.ngrok.io/api/oauth2/authorization/google',
+    url: `${environment.authUri}/oauth2/authorization/google`,
     icon: 'google',
   },
 ];
