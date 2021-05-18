@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="header">Appointment</h1>
+    <nb-card>
+      <nb-card-header>Appointment Details</nb-card-header>
+      <nb-card-body>
+
+        <div class="form-group">
+          <label for="inputClinic" class="label">Clinic</label>
+          <input #inputClinic nbInput fullWidth [disabled]="isHouseCall" id="inputClinic" type="text"
+                 placeholder="Clinic" autocomplete="off"
+                 (input)="onClinicChange()" [nbAutocomplete]="clinicAutocomplete"/>
+          <nb-autocomplete #clinicAutocomplete (selectedChange)="onClinicSelectionChange($event)">
+            <nb-option *ngFor="let clinic of filteredClinics | async" [value]="clinic.name">
+              {{ clinic.name }}
+            </nb-option>
+          </nb-autocomplete>
+        </div>
+
+        <div class="form-group">
+          <nb-checkbox id="inputIsHouseCall" (checkedChange)="toggle($event)">House Call</nb-checkbox>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPatient" class="label">Patient</label>
+          <input #inputPatient nbInput fullWidth id="inputPatient" type="text" placeholder="Patient"
+                 (input)="onPatientChange()" [nbAutocomplete]="patientAutocomplete"/>
+          <nb-autocomplete #patientAutocomplete (selectedChange)="onPatientSelectionChange($event)">
+            <nb-option *ngFor="let patient of filteredPatients | async" [value]="patient.name">
+              {{ patient.name }}
+            </nb-option>
+          </nb-autocomplete>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmployee" class="label">Medical Employee</label>
+          <input #inputEmployee nbInput fullWidth id="inputEmployee" type="text" placeholder="Medical Employee"
+                 (input)="onEmployeeChange()" [nbAutocomplete]="employeeAutocomplete"/>
+          <nb-autocomplete #employeeAutocomplete (selectedChange)="onEmployeeSelectionChange($event)">
+            <nb-option *ngFor="let employee of filteredEmployees | async" [value]="employee.name">
+              {{ employee.name }}
+            </nb-option>
+          </nb-autocomplete>
+        </div>
+
+        <div class="two-columns-form-group">
+          <div class="form-group">
+            <label for="inputStartDatetime" class="label">Start Time</label>
+            <nb-form-field>
+              <nb-icon nbPrefix icon="clock-outline" pack="eva"></nb-icon>
+              <input nbInput fullWidth id="inputStartDatetime" placeholder="Start Time" [nbDatepicker]="startDatepicker">
+              <nb-datepicker #startDatepicker></nb-datepicker>
+            </nb-form-field>
+          </div>
+          <div class="form-group">
+            <label for="inputEndDatetime" class="label">End Time</label>
+            <nb-form-field>
+              <nb-icon nbPrefix icon="clock-outline" pack="eva"></nb-icon>
+              <input nbInput fullWidth id="inputEndDatetime" placeholder="End Time" [nbDatepicker]="endDatepicker">
+              <nb-datepicker #endDatepicker></nb-datepicker>
+            </nb-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPurpose" class="label">Purpose</label>
+          <textarea nbInput fullWidth id="inputPurpose" placeholder="Purpose" rows="5"></textarea>
+        </div>
+
+        <a nbButton fullWidth [status]="'primary'" routerLink="/pages/patients/all">
+          <nb-icon icon="bookmark"></nb-icon>
+          <span>Save Appointment</span>
+        </a>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

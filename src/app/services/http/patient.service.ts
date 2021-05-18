@@ -17,6 +17,10 @@ export class PatientService {
     return this.http.get<PatientModel>(`${environment.apiUri}/patients/${id}`);
   }
 
+  public getPatientNames(): Observable<NamedIdentificationModel[]> {
+    return this.http.get<NamedIdentificationModel[]>(`${environment.apiUri}/patients/names`);
+  }
+
   public getPatientMedicalRecordDataSource(): ServerDataSource {
     return new CustomServerDataSource(this.http, {
       endPoint: `${environment.apiUri}/patients/medical-records`,

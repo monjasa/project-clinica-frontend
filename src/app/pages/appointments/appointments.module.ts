@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
   NbActionsModule,
+  NbAutocompleteModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
@@ -15,7 +16,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { routedComponents, PatientsRoutingModule } from './patients-routing.module';
+import { AppointmentsRoutingModule, routedComponents } from './appointments-routing.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { routedComponents, PatientsRoutingModule } from './patients-routing.modu
     NbCardModule,
     NbIconModule,
     NbInputModule,
-    PatientsRoutingModule,
+    AppointmentsRoutingModule,
     Ng2SmartTableModule,
     NbButtonModule,
     NbActionsModule,
@@ -33,11 +34,12 @@ import { routedComponents, PatientsRoutingModule } from './patients-routing.modu
     NbSelectModule,
     NbIconModule,
     NbFormFieldModule,
+    NbAutocompleteModule,
     ngFormsModule,
   ],
   declarations: [
     ...routedComponents,
   ],
 })
-export class PatientsModule {
+export class AppointmentsModule {
 }

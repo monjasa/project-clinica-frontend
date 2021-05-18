@@ -11,5 +11,5 @@
 export const environment = {
   production: false,
   apiUri: 'http://localhost:4200/api',
-  authUri: 'https://000a2143f492.ngrok.io/api',
+  authUri: 'https://03e41d55912d.ngrok.io/api',
 };
